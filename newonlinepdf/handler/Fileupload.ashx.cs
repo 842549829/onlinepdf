@@ -28,6 +28,7 @@ namespace newonlinepdf.handler
                     if (extension == ".doc")
                     {
                         Convert.ConvertWordToPdf(filePath, pdfPath);
+                        //Convert.ConvertWordToHtml(filePath, HttpContext.Current.Server.MapPath("/file/html/") + date + ".html");
                     }
                     else if (extension == ".pptx" || extension == ".ppt")
                     {
