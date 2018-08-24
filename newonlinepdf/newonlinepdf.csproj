@@ -87,7 +87,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="file\pdf\net.pdf" />
     <Content Include="file\word.doc" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
@@ -106,6 +105,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="file\pdf\" />
     <Folder Include="html\" />
   </ItemGroup>
   <PropertyGroup>
