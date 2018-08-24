@@ -25,7 +25,7 @@ namespace newonlinepdf.handler
                     var filePath = HttpContext.Current.Server.MapPath("/file/") + Path.GetFileName(file.FileName);
                     file.SaveAs(HttpContext.Current.Server.MapPath("/file/") + Path.GetFileName(file.FileName));
                     var extension = Path.GetExtension(file.FileName).ToLower();
-                    if (extension == ".doc")
+                    if (extension == ".doc" || extension == "docx")
                     {
                         Convert.ConvertWordToPdf(filePath, pdfPath);
                         //Convert.ConvertWordToHtml(filePath, HttpContext.Current.Server.MapPath("/file/html/") + date + ".html");
