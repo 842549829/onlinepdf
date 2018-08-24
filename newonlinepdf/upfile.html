@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>upfile</title>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/jquery.media.js"></script>
+    <script>
+        function uploadFile() {
+            var ofile = $("#file").get(0).files[0];
+            var formData = new FormData();
+            if (!ofile) {
+                alert('提示', '请上传文件!', 'info');
+                return;
+            }
+            var size = ofile.size / 1024 / 1024;
+            if (size > 50) {
+                alert('提示', '文件不能大于50M', 'info');
+                return;
+            }
+
+            formData.append("file", ofile);//这个是文件，这里只是演示上传了一个文件，如果要上传多个的话将[0]去掉
+            formData.append("F_ID", $("#F_ID").val());//这个是上传的其他参数
+            $.ajax({
+                url: 'handler/Fileupload.ashx',
+                type: "POST",
+                data: formData,
+                cache: false,//不需要缓存
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    if (data !== "fail") {
+                        $('#filePage').attr("href", data);
+                        $('#filePage').media({ width: 900, height: 1100, autoplay: true });
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <form enctype="multipart/form-data" ID="form1" runat="server">
+        <input type="file" id="file" name="file" runat="server"/>
+        <input type="button" value="提交" onclick="uploadFile()"/>
+    </form>
+    <br/>
+    <a id="filePage"></a>
+</body>
+</html>
